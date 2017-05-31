@@ -1,0 +1,19 @@
+Updates on Foundation Module and Configuration Process:
+
+Whenever you clone the react boilerplate and plan on installing and using the foundation-sites module
+along with Webpack, follow these configuration steps (to avoid/fix compilation errors):
+
+1) npm install
+2) navigate the node_modules folder and open up 'foundation-sites' folder
+	- look for the 'foundation.min.js' file, which should be inside subfolders inside 'dist' folder
+	- take note of this directory path
+3) modify the following configuration variables inside webpack.conf.js:
+	- inside the 'entry' array, change 'script!foundation-sites/dist/.../foundation.min.js' to the
+		appropriate directory path mentioned in step 2)
+4) modify the following configuration variables inside karma.conf.js:
+	- inside the 'files' array, change 'node_modules/foundation-sites/dist/.../foundation.min.js' to the 
+		appropriate directory path mentioned in step 2)
+5) foundation-sites may be an updated version from the boilerplate, so you need to do the following:
+	- navigate to node_modules/foundation-sites/scss/settings folder
+	- open up _settings.scss file, copy everything inside and paste into app/styles/base/_foundation-settings.scss
+6) Hopefully everything should work now when running 'webpack' or 'webpack -w'
